@@ -37,9 +37,46 @@ function init(){
 		ctx.clearRect(0,0,canvas.width, canvas.height);
 		ctx.beginPath();
 		ctx.rect(0,0,canvas.width,canvas.height);
-		ctx.fillStyle = "#FFF";
-		ctx.fill();
 		ctx.fillStyle = "#000";
+		ctx.strokeStyle = "#FFF";
+		ctx.fill();
+
+		// Calculate scale
+		rad = 300;
+		high = highOrb.range.value * rad / radius.range.value;
+		low = lowOrb.range.value * rad / radius.range.value;
+		console.log(rad, high, low)
+
+		// Draw the planet
+		drawCircle(rad, true);
+
+		// Draw the high orbit
+		drawCircle(rad + high, false);
+
+		// Draw the transfer orbit
+		drawOrbit(rad + low, rad + high);
+	}
+
+	function drawCircle(r,f){
+		ctx.beginPath();
+		ctx.arc(canvas.width / 2, canvas.height / 2, r, 0, 2 * Math.PI);
+		if(f){
+			ctx.fillStyle = "#880";
+			ctx.fill();
+			ctx.fillStyle = "#000";
+		} else {
+			ctx.stroke();
+		}
+	}
+
+	function drawOrbit(rlow, rhigh){
+		console.log(rlow,rhigh);
+		e = (rhigh - rlow) / (rhigh + rlow);
+		ry = rlow / (1 - e)
+		rx = ry * Math.sqrt(1 - Math.pow(e,2));
+		ctx.beginPath();
+		ctx.ellipse(canvas.width / 2, canvas.height / 2 - ry * e, rx, ry, Math.PI / 2, 0, Math.PI)
+		ctx.stroke();
 	}
 }
 
