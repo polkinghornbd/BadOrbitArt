@@ -39,6 +39,7 @@ function init(){
 		ctx.rect(0,0,canvas.width,canvas.height);
 		ctx.fillStyle = "#000";
 		ctx.strokeStyle = "#FFF";
+		ctx.lineWidth = 4;
 		ctx.fill();
 
 		// Calculate scale
@@ -61,7 +62,7 @@ function init(){
 		ctx.beginPath();
 		ctx.arc(canvas.width / 2, canvas.height / 2, r, 0, 2 * Math.PI);
 		if(f){
-			ctx.fillStyle = "#880";
+			ctx.fillStyle = "#A99465";
 			ctx.fill();
 			ctx.fillStyle = "#000";
 		} else {
