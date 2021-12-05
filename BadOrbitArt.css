@@ -1,0 +1,13 @@
+.slidecontainer div {
+  width: 20%; /* Width of the outside container */
+  float: left;
+}
+
+canvas {
+  background: #FFF;
+  padding: 0;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  display: block;
+  border: 2px solid black;
+}
